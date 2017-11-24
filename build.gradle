@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceSets {
+    main.java.srcDir "JavaSource/"
+    main.resources.srcDir "Resources/"
+}
+
+
+repositories{
+    mavenCentral()
+}
+
+
+
+dependencies{
+
+    /* Include all jars in libs folder */
+    compile fileTree(dir: 'libs', include: '*.jar')
+
+}
+
