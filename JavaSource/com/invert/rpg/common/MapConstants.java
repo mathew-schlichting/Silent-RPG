@@ -5,9 +5,12 @@ package com.invert.rpg.common;
  */
 public class MapConstants {
 
-    public static int           TILE_SIZE   =   40;
+    public static int           TILE_SIZE   =   64;
 
 
     public static int           BLACK       =   0;
+    public static int           GRASS       =   1;
+    public static int           WATER       =   2;
+
 
 }
