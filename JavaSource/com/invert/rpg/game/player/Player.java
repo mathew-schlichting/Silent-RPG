@@ -44,13 +44,13 @@ public class Player extends SerializedGameObject {
         int mx = 1;     // multiplier for x (1 or -1)
         int my = 1;     // multiplier for y (1 or -1)
 
-        if(targetX != getX() ){
-            x = targetX - getX();
+        if(targetX != getCenterX() ){
+            x = targetX - getCenterX();
             mx = Math.abs(x)/x;
             x = Math.abs(x);
         }
-        if(targetY != getY()){
-            y = targetY - getY();
+        if(targetY != getCenterY()){
+            y = targetY - getCenterY();
             my = Math.abs(y)/y;
             y = Math.abs(y);
         }
@@ -70,6 +70,6 @@ public class Player extends SerializedGameObject {
 
     @Override
     public void render(Graphics2D g, float v) {
-        render(g, v, PLAYER_SPRITE[getId()]);
+        renderCenter(g, v, PLAYER_SPRITE[getId()]);
     }
 }
