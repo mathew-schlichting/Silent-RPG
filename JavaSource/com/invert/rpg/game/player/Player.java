@@ -34,9 +34,7 @@ public class Player extends SerializedGameObject {
     }
 
 
-    @Override
-    public void tick(){
-        super.tick();
+    public void movePlayer(){
         int dx, dy;     // delta x and y
         int x = 0;      // x axis of triangle
         int y = 0;      // y axis of triangle
@@ -65,6 +63,13 @@ public class Player extends SerializedGameObject {
         dy = Math.min(y, dy) * my;
 
         moveDelta(dx, dy);
+    }
+
+
+    @Override
+    public void tick(){
+        super.tick();
+        movePlayer();
     }
 
 
