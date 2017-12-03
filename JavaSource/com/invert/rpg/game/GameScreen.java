@@ -3,6 +3,7 @@ package com.invert.rpg.game;
 import com.invert.engine.output.display.Window;
 import com.invert.engine.output.display.screens.Button;
 import com.invert.engine.output.display.screens.Screen;
+import com.invert.rpg.RpgMain;
 
 import java.awt.*;
 
@@ -36,6 +37,12 @@ public class GameScreen extends Screen {
     @Override
     public void click(int x, int y) {
 
+    }
+
+    @Override
+    public void leftRelease(int x, int y){
+        super.leftRelease(x, y);
+        game.getPlayer().leftRelease(x - Window.getXScroll(), y - Window.getYScroll());
     }
 
     public void tick(){

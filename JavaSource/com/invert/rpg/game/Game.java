@@ -20,7 +20,7 @@ public class Game implements GameObjectI{
     public Game(){
         map = new Map("maps/test.map");
 
-        player = new Player(0, 100, 100, TILE_SIZE/2, TILE_SIZE/2);
+        player = new Player(0, 100, 100, TILE_SIZE, TILE_SIZE);
     }
 
 
