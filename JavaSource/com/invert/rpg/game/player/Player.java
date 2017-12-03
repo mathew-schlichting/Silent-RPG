@@ -91,41 +91,45 @@ public class Player extends SerializedGameObject {
         return -1;
     }
 
-    public void attack(int x, int y){
-        Attack attack;
-        double speed = 20;
-        int dx, dy;     // delta x and y
-        double z;          // hypotenoos (hell yeah I spell it like that)
-        double mx = 1;     // multiplier for x (1 or -1)
-        double my = 1;     // multiplier for y (1 or -1)
+    public void attack(int x, int y, int attackType){
+        if(attackType >= 0) {
 
-        x = x - getCenterX();
-        if(x != getCenterX()){
-            mx = Math.abs(x) / x;
+
+            Attack attack;
+            double speed = 20;
+            int dx, dy;     // delta x and y
+            double z;          // hypotenoos (hell yeah I spell it like that)
+            double mx = 1;     // multiplier for x (1 or -1)
+            double my = 1;     // multiplier for y (1 or -1)
+
+            x = x - getCenterX();
+            if (x != getCenterX()) {
+                mx = Math.abs(x) / x;
+            }
+            x = Math.abs(x);
+
+            y = y - getCenterY();
+            if (y != getCenterY()) {
+                my = Math.abs(y) / y;
+            }
+            y = Math.abs(y);
+
+
+            z = Math.max((int) Math.ceil(Math.sqrt((x * x) + (y * y))), 1);
+
+            dx = (int) (mx * speed * x / z);
+            dy = (int) (my * speed * y / z);
+
+            attack = new Attack(0, getCenterX(), getCenterY(), 20, 20, PlayerConstants.Type.fire, dx, dy);
+            attacks.add(attack);
         }
-        x = Math.abs(x);
-
-        y = y - getCenterY();
-        if(y != getCenterY()) {
-            my = Math.abs(y) / y;
-        }
-        y = Math.abs(y);
-
-
-        z = Math.max((int) Math.ceil(Math.sqrt((x * x) + (y * y))), 1);
-
-        dx = (int) (mx * speed * x / z);
-        dy = (int) (my * speed * y / z);
-
-        attack = new Attack(0, getCenterX(), getCenterY(), 20, 20, PlayerConstants.Type.fire, dx, dy);
-        attacks.add(attack);
     }
 
 
 
     public void leftRelease(int x, int y) {
-        if(canAttack() && checkAttack()){
-            attack(x, y);
+        if(canAttack()){
+            attack(x, y, checkAttack());
         }
     }
 
